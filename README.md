@@ -7,6 +7,7 @@ Chatbot can remember what you have in your fridge. You can add, update, delete a
 - Python: We create an API with FastApi
 - Redis: To store each chat session.
 - React / Next.js: To build our front
+- OpenAI: We use text-davinci-003 model to build business logic
 
 
 ## Next steps
