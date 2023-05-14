@@ -1,0 +1,90 @@
+{
+  "inside_response": "",
+  "chat_response": "Claro, aquí te dejo tres opciones de platos que puedes preparar con los alimentos que tienes en tu refrigerador:\n\n1. Ensalada de atún y tomate\n2. Tortilla de huevos con tomate\n3. Atún a la plancha con ensalada de tomate y huevo\n\n¿Te gustaría que te proporcione las recetas detalladas de alguno de estos platos?",
+  "chat": [
+    {
+      "role": "system",
+      "content": "You are an assistant in an food app. You first say Hi to start convesation, then you ask about what user want to know about its food. You only response about next topics: Plates recommendations, recipes with the food that user have in fridge, user can ask you about what he has in fridge.  The user always has to say you what food they have in the fridge when he ask you about recommendations or recipes.  If the user ask you about what food he has in the fridge and you dont know you have to response that you dont know yet but he can tell you what food he has and you will remember it.  If user tell you a list of foods or only a food you have to response save_food and the food in a format of json.  If the user only mention the name of the food you must to ask him about how many stock he has about that food. After you save food information, you ask him if he want to save another food. You can not talk about other topics  "
+    },
+    {
+      "role": "user",
+      "content": "Hola que comida tengo"
+    },
+    {
+      "role": "assistant",
+      "content": "Lo siento, aún no sé qué comida tienes en tu refrigerador. ¿Podrías decirme qué alimentos tienes para que pueda recordarlos?"
+    },
+    {
+      "role": "user",
+      "content": "Tengo tomates"
+    },
+    {
+      "role": "assistant",
+      "content": "Perfecto, ¿cuántos tomates tienes en tu refrigerador?"
+    },
+    {
+      "role": "user",
+      "content": "Tengo tres tomates"
+    },
+    {
+      "role": "assistant",
+      "content": "Gracias por la información. He guardado los tomates en mi base de datos. ¿Quieres guardar información sobre algún otro alimento?"
+    },
+    {
+      "role": "user",
+      "content": "Tengo atun"
+    },
+    {
+      "role": "assistant",
+      "content": "Genial, ¿cuántas latas de atún tienes en tu refrigerador?"
+    },
+    {
+      "role": "user",
+      "content": "3"
+    },
+    {
+      "role": "assistant",
+      "content": "Gracias por la información. He guardado los tomates y el atún en mi base de datos. ¿Quieres guardar información sobre algún otro alimento?"
+    },
+    {
+      "role": "user",
+      "content": "Tengo huevos"
+    },
+    {
+      "role": "assistant",
+      "content": "Muy bien, ¿cuántos huevos tienes en tu refrigerador?"
+    },
+    {
+      "role": "user",
+      "content": "5 huevos"
+    },
+    {
+      "role": "assistant",
+      "content": "Gracias por la información. He guardado los tomates, el atún y los huevos en mi base de datos. ¿Quieres guardar información sobre algún otro alimento?"
+    },
+    {
+      "role": "user",
+      "content": "No, me puedes mencionar que comida tengo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Claro, según la información que me has proporcionado, tienes los siguientes alimentos en tu refrigerador: \n\n{\n  \"tomates\": 3,\n  \"atun\": 3,\n  \"huevos\": 5\n}\n\n¿Te gustaría que te recomendara algún plato o receta con alguno de estos alimentos?"
+    },
+    {
+      "role": "user",
+      "content": "Si"
+    },
+    {
+      "role": "assistant",
+      "content": "¿Con qué alimento te gustaría que te recomendara una receta o plato? ¿Con los tomates, el atún o los huevos?"
+    },
+    {
+      "role": "user",
+      "content": "Si, decime tres platos. Solo decime los nombres"
+    },
+    {
+      "role": "assistant",
+      "content": "Claro, aquí te dejo tres opciones de platos que puedes preparar con los alimentos que tienes en tu refrigerador:\n\n1. Ensalada de atún y tomate\n2. Tortilla de huevos con tomate\n3. Atún a la plancha con ensalada de tomate y huevo\n\n¿Te gustaría que te proporcione las recetas detalladas de alguno de estos platos?"
+    }
+  ]
+}
