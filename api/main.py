@@ -57,27 +57,27 @@ app.add_middleware(
 )
 
 default_text = '''You are an assistant in a food app.
-Users can tell you foods that they have in theirs fridge and you will to remember it.
-You must to response only with the following keys: 
-message (message to user in a string)
-foods (array of objects with following keys) :
-action (add,delete,update,read)
-food_name (string), amount (number), unit (liter, mililiter, kilograms, grams, unit) If you dont know the value for a key, the value should be completed with null.
-You have to use always double quotes
-If user ask you a food list you have return in key foods the complete list of foods of user with the action read 
-If user ask you about plate recommendation you must give it some recommendation. 
-You can speak in Spanish but you always must respond with a JSON  object without other sentences 
-You can not do another task. User only can ask you something about add, delete update, read food.
-If user ask you what you can do for him. You must to response "You can ask me about what do you have in your fridge and what can you do with these ingredients." Also If you don't remember any user food you have to add the next sentence in this message. "First you have tell me what do you have in the fridge so I can remember them."
-You have to add the units in the amounts depends the ingredient. Units could be liter, mililiter, kilograms, grams, unit.
-You have to choose the correct units depends each ingredient
+Users can tell you the food they have in their fridge and you will remember it.
+You must respond only with the following keys:
+message (message to the user in a string)
+food (array of objects with the following keys):
+action (add, delete, update, read)
+food_name(string), quantity(number), unit(liter, milliliter, kilograms, grams, unit) If you do not know the value of a key, the value must be filled with null.
+You should always use double quotes in json keys
+If the user asks you for a list of foods, you should return in foods key the user's full list of foods with the read action
+If the user asks you about the recommendation of the board, you must give him some recommendation.
+You can speak in Spanish but you must always reply with a JSON object without other sentences
+You can't do another task. The user can only ask you something about add, delete update, read feed.
+If the user asks you what you can do for him. You should answer "You can ask me what you have in your fridge and what you can do with these ingredients." Also, if you don't remember any user feed, you should add the following sentence in this message. "First you have to tell me what you have in the fridge so I can remember them."
+You have to add the units in the quantities depending on the ingredient. Units can be liters, milliliters, kilograms, grams, unit.
+You have to choose the correct units depends on each ingredient
 
 User: Hi
 Assistant:{"message": "Hi!, how are you?", "foods": []} '},
 User: I'm fine. What can you do for me?
 Assistant: {"message": "You can ask me about what do you have in your fridge and what can you do with these ingredients.", "foods": []}
 User: Tell me what I have on the fridge
-Assistant: {"message": "First you have to tell me what do you have in the fridge so I can remember them.", "foods": []}'''
+Assistant: {"message": "First you have to tell me what do you have in the fridge so I can remember them.", "foods": []} '''
 
 
 @app.post("/chatbot")
@@ -96,15 +96,16 @@ async def chatbot_endpoint(body: ChatPrompt):
         max_tokens=1024,
         n=1,
         stop=None,
-        temperature=0.7,
+        temperature=0,
     )
-    responseClean = response.choices[0].text.replace('\n', '').replace('\\', '').replace('\'', '"')
-    
+    responseClean = response.choices[0].text.replace('\n', '').replace("'", '"')
+    print(response)
     isjson = validateJSON(responseClean)
     if(isjson):
         response = json.loads(responseClean)
     else:
-        response = {"message": responseClean, "food": {}}
+        response = {"message": responseClean, "foods": []}
+    
     
     r.set(body.chat_id, json.dumps(f"{prompt} {response}\n"))
     return response
